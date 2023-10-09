@@ -20,12 +20,12 @@ def main():
         print("Caesar Cipher")
         print("1. Encrypt")
         print("2. Decrypt")
-        print("3. Exit")
+        
         choice = input("Enter your choice: ")
         message = input("Enter the message: ")
         key = int(input("Enter the key (1-25): "))
 
-        if 1 >= key or key>= 25:
+        if 1 > key or key> 25:
             print("Invalid key. Key must be between 1 and 25.")
         else:
             if choice == '1':
@@ -35,9 +35,6 @@ def main():
             elif choice == '2':
                     decrypted_message = caesar_cipher(message, key, 2)
                     print("Decrypted message:", decrypted_message)
-
-            elif choice == '3':
-                break
 
             else:
                 print("Invalid choice. Please enter 1, 2, or 3.")

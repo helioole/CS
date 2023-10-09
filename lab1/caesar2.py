@@ -7,8 +7,6 @@ def caesar_cipher(text, key1, key2, mode):
         if char in mod_alphabet:
             if mode == 1:
                 new_index = (mod_alphabet.index(char) + key1) % 26
-                print(new_index)
-                result += mod_alphabet[new_index]
             elif mode == 2:
                 new_index = (mod_alphabet.index(char) - key1) % 26
 
@@ -56,7 +54,7 @@ def main():
         key1 = int(input("Enter the key (1-25): "))
         key2 = str(input("Enter the key word: "))
 
-        if 1 >= key1 or key1>= 25:
+        if 1 > key1 or key1> 25:
             print("Invalid key. Key must be between 1 and 25.")
         else:
             if choice == '1':
