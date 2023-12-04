@@ -73,8 +73,15 @@ def decrypt_playfair(ciphertext, key):
     return decrypted_text
 
 def is_valid_keyword(keyword):
+    if len(keyword)<=7:
+        return False
+
     romanian_alphabet = "AĂÂBCDEFGHIÎKLMNOPQRSȘTȚUVWXYZ"
-    return all(char.upper() in romanian_alphabet for char in keyword) and len(keyword) >= 7
+    for char in keyword:
+        if char not in romanian_alphabet:
+            return False
+
+    return True
 
 def main():
     while True:
@@ -83,17 +90,17 @@ def main():
         print("3. Quit")
         choice = input("Enter your choice: ")
         if choice == "1":
-            key = input("Enter the keyword (min 7 characters, Romanian alphabet only): ")
+            key = input("Enter the keyword: ")
             if not is_valid_keyword(key):
-                print("Invalid keyword. Please use at least 7 characters from the Romanian alphabet.")
+                print("Invalid keyword. The keyword must be at least 7 characters long and contain only Romanian alphabet characters.")
                 continue
             plaintext = input("Enter the message to encrypt: ")
             encrypted_text = encrypt_playfair(plaintext, key)
             print("Encrypted:", encrypted_text)
         elif choice == "2":
-            key = input("Enter the keyword (min 7 characters, Romanian alphabet only): ")
+            key = input("Enter the keyword: ")
             if not is_valid_keyword(key):
-                print("Invalid keyword. Please use at least 7 characters from the Romanian alphabet.")
+                print("Invalid keyword. The keyword must be at least 7 characters long and contain only Romanian alphabet characters.")
                 continue
             ciphertext = input("Enter the message to decrypt: ")
             decrypted_text = decrypt_playfair(ciphertext, key)
@@ -105,3 +112,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+
